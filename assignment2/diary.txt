@@ -1,0 +1,6 @@
+I studied python
+Went for a walk
+done for now
+
+triggered exception
+done for now
