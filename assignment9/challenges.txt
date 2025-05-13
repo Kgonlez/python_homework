@@ -1,0 +1,12 @@
+While working on the OWASP Top 10 scraping task, I encountered a few challenges:
+1. Incorrect XPath Selection
+    Inititally, my XPath did not correctly target the Vulnerability titles. I was using an overly specific path that
+    missed the intended elements. After inspecting the HTML structure more closely, I realized that the titles were inside
+    <strong> tags within <a> tags inside <li> elements. I adjusted the XPath accordingly to //section[contains(@class, "page-body")]//ul/li/a[strong],
+    which successfully selected the correct items.
+2. Empty Titles in Results
+    When extracting the text from the <strong> tags, some entries were returning empty strings. I added the try/except blovk to 
+    handle cases where the <strong> tag might be missing or malformed, and I filtrered out empty titles from the results list.
+
+These issues taight me the importance of thoroughly inspecting web page structure and testing XPath expressions carefully. I also gained 
+more experience in debugging Selenium and handling ends cases in scraped content.

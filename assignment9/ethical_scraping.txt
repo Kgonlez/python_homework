@@ -1,0 +1,21 @@
+Which section of the website are restriceted for crawling?
+- Restricted sectiions include dynamic and API related endpoints such as 
+    Disallow: /w/
+    Disallow: /api/
+    Disallow: /trap/
+    Disallow: /wiki/Special:
+    Disallow: /wiki/Spezial:
+    Disallow: /wiki/Spesial:
+    Disallow: /wiki/Special%3A
+    Disallow: /wiki/Spezial%3A
+    Disallow: /wiki/Spesial%3A
+
+Are there any specific rules for certain user agents?
+- Yes, there are specific rules for certain user agebts such as GPTBot, Slurp, and others. These are disallowed entirely 
+  from accessing any part of the site. 
+
+Reflect on why websites use robots.txt and write 2-3 sentences explaining its purpose and how it promotes ethical scraping.
+- Website use robots.txt to contril which parts of their content can be access by automated bots or crawlers. 
+  This protects server resoucres, prevents overloading, and restricts access to sensitive or dynamic areas of a site. It 
+  promotes ethical scraping by encouraging developers to respect site owners' rules and avoid extracting data from areas 
+  where permission is not granted. 
