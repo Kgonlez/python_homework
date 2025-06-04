@@ -1,0 +1,15 @@
+function : hello_world
+positional parameters: none
+keyword parameters: none
+return: None
+----------------------------------------
+function : check_numbers
+positional parameters: [1, 2, 3, 4]
+keyword parameters: none
+return: True
+----------------------------------------
+function : return_decorator
+positional parameters: none
+keyword parameters: {'x': 5, 'y': 15}
+return: <function logger_decorator at 0x000001A626E23D80>
+----------------------------------------
