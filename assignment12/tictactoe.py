@@ -1,4 +1,4 @@
-class TictactoeExpectation(Exception):
+class TictactoeException(Exception):
     def __init__(self, message):
         self.message = message
         super().__init__(message)
@@ -16,7 +16,7 @@ class Board:
 
     def __str__(self):
         lines = []
-        lines.append(f" {self.board_array[0][0]} | {self.board_array[0][1]} | {self.board_array[0][1]} \n")
+        lines.append(f" {self.board_array[0][0]} | {self.board_array[0][1]} | {self.board_array[0][2]} \n")
         lines.append("-----------\n")
         lines.append(f" {self.board_array[1][0]} | {self.board_array[1][1]} | {self.board_array[1][2]} \n")
         lines.append("-----------\n")
@@ -25,14 +25,14 @@ class Board:
     
     def move(self, move_string):
         if move_string not in Board.valid_moves:
-            raise TictactoeExpectation("That's not a valid move.")
+            raise TictactoeException("That's not a valid move.")
         
         move_index = Board.valid_moves.index(move_string)
         row = move_index //3
         col = move_index % 3
 
         if self.board_array[row][col] != " ":
-            raise TictactoeExpectation("That spot is taken.")
+            raise TictactoeException("That spot is taken.")
         
         self.board_array[row][col] = self.turn
         if self.turn == "X":
@@ -43,7 +43,7 @@ class Board:
     def whats_next(self):
         for i in range(3):
             if self.board_array[i][0] == self.board_array[i][1] == self.board_array[i][2] != " ":
-                return (True, f"{self.board_array[0][i]} wins!")
+                return (True, f"{self.board_array[i][0]} wins!")
             
             if self.board_array[0][i] == self.board_array[1][i] == self.board_array[2][i] != " ":
                 return (True, f"{self.board_array[0][i]} wins!")
@@ -54,7 +54,7 @@ class Board:
             return (True, f"{self.board_array[0][2]} wins!")
         
 
-        if all(cell != " " for now in self.board_array for cell in now):
+        if all(cell != " " for row in self.board_array for cell in row):
             return (True, "Cat's Game.")
         
         return (False, f"{self.turn}'s turn.")
@@ -70,8 +70,8 @@ if __name__ == '__main__':
 
         try:
             board.move(move)
-        except TictactoeExpectation as e:
-            print("Error:", e.messge)
+        except TictactoeException as e:
+            print("Error:", e.message)
             continue
 
         game_over, message = board.whats_next()
